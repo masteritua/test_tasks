@@ -2,7 +2,6 @@ from django import forms
 from django.contrib.admin import widgets
 from account.models import User, Profile
 from bootstrap_datepicker.widgets import DatePicker
-import socket
 
 
 class ProfileEdit(forms.ModelForm):
@@ -49,12 +48,13 @@ class ProfileEdit(forms.ModelForm):
         return cleaned_data
 
     def save(self, commit=True):
+
         user = super().save(commit=False)  # no save to database
         user.set_password(self.cleaned_data['password'])  # password should be hashed!
         user.save(update_fields=['password', 'email', 'first_name', 'last_name'])
 
         profile = Profile.objects.get(user_id=user.id)
-        profile.ip = socket.gethostbyname(socket.gethostname())
+        profile.ip = self.instance.ip
         profile.biography = self.cleaned_data['biography']
         profile.contacts = self.cleaned_data['contacts']
         profile.date_of_birth = self.cleaned_data['date_of_birth']

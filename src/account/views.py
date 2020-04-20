@@ -6,6 +6,7 @@ from account.models import User, Profile as Pro
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from account.forms import ProfileEdit
+from django.views.generic.edit import ModelFormMixin
 
 
 @method_decorator(login_required(login_url='/login'), name='dispatch')
@@ -16,7 +17,6 @@ class Profile(DetailView):
     success_url = reverse_lazy('home')
 
     def get_context_data(self, **kwargs):
-
         context = super().get_context_data(**kwargs)
         context['profile'] = Pro.objects.filter(user_id__exact=self.queryset.first().id).first()
 
@@ -30,3 +30,8 @@ class ProfileEdit(UpdateView):
     form_class = ProfileEdit
     success_url = reverse_lazy('home')
 
+    def form_valid(self, form):
+        form.instance.ip = self.request.META.get('REMOTE_ADDR')
+        self.object = form.save()
+
+        return super(ModelFormMixin, self).form_valid(form)
