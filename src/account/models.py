@@ -11,7 +11,6 @@ class User(AbstractUser):
 
 
 class Profile(models.Model):
-    id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='profile_user')
     date_of_birth = models.DateField(null=True, blank=True)
     biography = models.TextField(null=True, blank=True)

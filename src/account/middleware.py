@@ -3,16 +3,17 @@ from datetime import datetime
 import time
 
 
-class LogRequestTimeMiddleware(MiddlewareMixin):
+class LogRequestTimeMiddleware:
 
     def __init__(self, get_response):
         self.get_response = get_response
-        self.time_tracking = {}
 
-    def process_request(self, request):
+    def __call__(self, request):
+        self.time_tracking = {}
         self.time_tracking[request] = time.time()
 
-    def process_response(self, request, response):
+        response = self.get_response(request)
+
         if request not in self.time_tracking:
             return response
 
