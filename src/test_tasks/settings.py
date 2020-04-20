@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'bootstrap_datepicker',
     'crispy_forms',
     'account',
+    'profiles',
     'account.templatetags',
 ]
 MIDDLEWARE = [
@@ -69,9 +70,6 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'account.context_processors.settings',
             ],
-            # 'libraries': {
-            #     'render_admin': 'account.templatetags.render_admin',
-            # },
         },
     },
 ]

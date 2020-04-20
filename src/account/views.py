@@ -2,7 +2,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import UpdateView, CreateView, ListView, View, DetailView
-from .models import User, Profile as Pro
+from account.models import User, Profile as Pro
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from account.forms import ProfileEdit
