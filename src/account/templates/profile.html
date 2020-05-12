@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load current_tags %}
+{% block title %}Profile{% endblock title %}
+
+{% block content %}
+
+<h1>Профиль № {{ object.id }}</h1>
+<p>Имя: {{ object.first_name }}</p>
+<p>Фамилия: {{ object.last_name }}</p>
+<p>Дата рождения: {{ profile.date_of_birth }}</p>
+<p>Биография: {{ profile.biography }}</p>
+<p>Контакты: {{ profile.contacts }}</p>
+<p>IP: {{ profile.ip }}</p>
+
+
+{% render_link object%}
+
+<!--Context processor example-->
+{{ settings.DEBUG }}
+
+{% endblock content %}
+
+
+
+

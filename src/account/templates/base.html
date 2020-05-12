@@ -1,0 +1,36 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>{% block title %} {% endblock title %}</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--css-->
+    <link rel="stylesheet" href="{% static 'front/vendor/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'front/datepicker/css/bootstrap-datepicker3.standalone.min.css' %}">
+
+    <!--js-->
+    <script src="{% static 'front/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'front/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'front/datepicker/js/bootstrap-datepicker.min.js' %}"></script>
+
+</head>
+
+<body id="page-top">
+<div class="container-fluid p-0">
+    {% block content %}
+    {% endblock content %}
+</div>
+
+
+</body>
+
+</html>
